@@ -1,0 +1,15 @@
+version: "2"
+services:
+  ghost:
+    image : ghost
+    restart: always
+    container_name: ghost
+
+  nginx-host:
+    build: ./nginx
+    restart: always
+    ports:
+      - "80:80"
+    links:
+      - ghost
+    container_name: nginx-host
